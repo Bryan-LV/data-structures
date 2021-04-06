@@ -35,6 +35,39 @@ test('should delete last node in list', () => {
   expect(sll.tail.value).toBe(20);
 })
 
+describe('tests shift method', () => {
+  test('should delete first in list', () => {
+    const sll = createSLL();
+    sll.append(10)
+    sll.append(20)
+    sll.shift();
+    expect(sll.head.value).toBe(20);
+  })
 
-// should insert into 2nd position
-// should insert to 2nd to last position
+  test('only one item in list should return null head', () => {
+    const sll = createSLL();
+    sll.append(10);
+    sll.shift();
+    expect(sll.head).toBe(null);
+  })
+
+  test('No items in list should return null', () => {
+    const sll = createSLL();
+    expect(sll.shift()).toBeNull()
+  })
+})
+
+describe('delete item', () => {
+  test('should delete 2', () => {
+    const sll = createSLL();
+    sll.append(1);
+    sll.append(2);
+    sll.append(3);
+
+    sll.deleteItem(2);
+
+    expect(sll.head.value).toBe(1);
+    expect(sll.head.next.value).toBe(3);
+
+  })
+})

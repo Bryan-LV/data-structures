@@ -20,9 +20,7 @@ class SinglyLinkedList {
       return this;
     }
 
-    // next new node to this.head
     newNode.next = this.head;
-    // then switch head next to new head
     this.head = newNode;
 
     return this;
@@ -70,8 +68,42 @@ class SinglyLinkedList {
     this.tail = targetNode;
     return this;
   }
+
   // delete from beginning
-  // delete from 'X'
+  shift() {
+    if (this.noHead()) {
+      return null;
+    }
+    // if no next in head then just remove head
+    if (!this.head.next) {
+      this.head = null;
+      return this;
+    }
+
+    // else get next after head and make new head
+    let newHead = this.head.next;
+    this.head = newHead;
+    return this;
+  }
+
+  deleteItem(X) {
+    if (this.noHead()) {
+      return null;
+    }
+
+    let curNode = this.head;
+    let prevNode = this.head;
+    while (curNode.next) {
+      if (curNode.value === X) {
+        // get prev node and next node of curNode and connect them
+        prevNode.next = curNode.next;
+      }
+      prevNode = curNode;
+      curNode = curNode.next;
+    }
+
+    return this;
+  }
 
   // Find Operations
   // search for single match
