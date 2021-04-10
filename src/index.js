@@ -1,12 +1,6 @@
 import SLL from './linked-list/singly-linked-list';
+import Stack from './stacks/stack';
 
-const x = new SLL();
+const stack = new Stack();
 
-x.prepend(10);
-x.prepend(20);
-x.append(30);
-x.append(40);
-
-x.pop();
-x.pop();
-console.log(x);
+console.log(stack.isEmpty())

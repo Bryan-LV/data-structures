@@ -42,9 +42,8 @@ class SinglyLinkedList {
     return this;
   }
 
-  // add to 'X'
-
   // DELETE OPERATIONS
+
   // delete from end
   pop() {
     if (this.noHead()) {
@@ -105,14 +104,49 @@ class SinglyLinkedList {
     return this;
   }
 
-  // Find Operations
-  // search for single match
-  // search for all matches
+  // FIND OPERATIONS
 
-  // Useful methods
-  // length
-  // get head
-  // get tail
+  // search for single match
+  find(X) {
+    if (this.noHead()) {
+      return null;
+    }
+
+    let curNode = this.head;
+    let target;
+
+    while (curNode.next) {
+      if (curNode.value === X) {
+        target = curNode;
+        break;
+      }
+      curNode = curNode.next;
+    }
+
+    return target ? target : null;
+  }
+
+  // search for all matches
+  findAll(X) {
+    if (this.noHead()) {
+      return null;
+    }
+
+    let curNode = this.head;
+    const target = [];
+
+    while (curNode.next) {
+      if (curNode.value === X) {
+        target.push(curNode);
+      }
+      curNode = curNode.next;
+    }
+
+    return target ? target : null;
+
+  }
+
+  // Utility methods
 
   createNode(value) {
     return new Node(value);
@@ -126,6 +160,25 @@ class SinglyLinkedList {
     }
     return false;
   }
+
+  getHead() {
+    return this.head ? this.head : null;
+  }
+
+  getTail() {
+    return this.tail ? this.tail : null;
+  }
+
+  getLength() {
+    let curNode = this.head;
+    let count = 0;
+    while (curNode) {
+      count++;
+      curNode = curNode.next;
+    }
+    return count;
+  }
+
 }
 
 export default SinglyLinkedList;
